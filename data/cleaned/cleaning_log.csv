@@ -1,0 +1,13 @@
+step,rows_affected,reason
+Raw rows loaded,6035,Starting point
+Removed duplicate order_id,35,Same order recorded twice
+Standardised text in weather,120,Fix case and extra spaces in weather
+Standardised text in zone,80,Fix case and extra spaces in zone
+Standardised text in traffic_level,0,Fix case and extra spaces in traffic_level
+Converted order_datetime to datetime,6000,Needed for hour / weekday features
+Removed impossible distance (0 or > 30 km),11,Delivery cannot be 0 km or 99.9 km in this city
+Removed negative actual delivery time,4,Time cannot be negative
+Missing traffic_level -> 'Unknown',25,Kept rows; 'Unknown' is its own group
+Missing prep_time -> median of same cuisine,40,"Prep time depends on cuisine, so cuisine median is fair"
+Missing customer_rating kept as blank,480,Not every customer rates; imputing would invent opinions
+Final clean rows,5985,Ready for EDA
